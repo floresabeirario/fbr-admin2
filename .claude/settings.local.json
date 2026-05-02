@@ -15,7 +15,8 @@
       "Bash(Start-Process -NoNewWindow -FilePath \"npm\" -ArgumentList \"run\",\"dev\" -WorkingDirectory \"c:\\\\Users\\\\maria\\\\Documents\\\\fbr-admin2\")",
       "Bash(npm install *)",
       "Bash(npx next *)",
-      "Bash(Remove-Item \"c:\\\\Users\\\\maria\\\\Documents\\\\fbr-admin2\\\\src\\\\middleware.ts\")"
+      "Bash(Remove-Item \"c:\\\\Users\\\\maria\\\\Documents\\\\fbr-admin2\\\\src\\\\middleware.ts\")",
+      "Bash(node -e \"const p=require\\('./node_modules/next/package.json'\\);console.log\\(p.version\\)\")"
     ]
   }
 }
