@@ -12,7 +12,10 @@
       "Bash(npx shadcn@latest add chart)",
       "Bash(npx tsc *)",
       "Bash(npm run *)",
-      "Bash(Start-Process -NoNewWindow -FilePath \"npm\" -ArgumentList \"run\",\"dev\" -WorkingDirectory \"c:\\\\Users\\\\maria\\\\Documents\\\\fbr-admin2\")"
+      "Bash(Start-Process -NoNewWindow -FilePath \"npm\" -ArgumentList \"run\",\"dev\" -WorkingDirectory \"c:\\\\Users\\\\maria\\\\Documents\\\\fbr-admin2\")",
+      "Bash(npm install *)",
+      "Bash(npx next *)",
+      "Bash(Remove-Item \"c:\\\\Users\\\\maria\\\\Documents\\\\fbr-admin2\\\\src\\\\middleware.ts\")"
     ]
   }
 }
