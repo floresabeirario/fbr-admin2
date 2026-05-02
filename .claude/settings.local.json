@@ -27,7 +27,8 @@
       "mcp__claude_ai_Vercel__get_runtime_logs",
       "Bash(git add *)",
       "Bash(git commit -m ' *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(git commit *)"
     ]
   }
 }
