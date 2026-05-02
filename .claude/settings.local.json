@@ -1,7 +1,18 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --yes)"
+      "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --yes)",
+      "Bash(Get-Content \"C:\\\\Users\\\\maria\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-maria-Documents-fbr-admin2\\\\a991e81c-2ef9-4136-907d-80010084d1f5\\\\tasks\\\\btup2o97i.output\" -Wait)",
+      "Bash(Select-String -Pattern \"Success|Error|Done|created|npm warn|npm error|ready\")",
+      "Bash(npx shadcn@latest init --defaults)",
+      "Bash(npx shadcn@latest add card table badge input label select dialog sheet sidebar navigation-menu dropdown-menu avatar separator skeleton toast)",
+      "Bash(npx shadcn@latest add card table badge input label select dialog sheet sidebar navigation-menu dropdown-menu avatar separator skeleton sonner)",
+      "Bash(npx shadcn@latest add form checkbox tabs progress alert-dialog textarea command popover calendar date-picker)",
+      "Bash(npx shadcn@latest add form checkbox tabs progress alert-dialog textarea command popover calendar)",
+      "Bash(npx shadcn@latest add chart)",
+      "Bash(npx tsc *)",
+      "Bash(npm run *)",
+      "Bash(Start-Process -NoNewWindow -FilePath \"npm\" -ArgumentList \"run\",\"dev\" -WorkingDirectory \"c:\\\\Users\\\\maria\\\\Documents\\\\fbr-admin2\")"
     ]
   }
 }
