@@ -30,7 +30,8 @@
       "Bash(git push *)",
       "Bash(git commit *)",
       "Bash(git rm *)",
-      "Bash(npx eslint *)"
+      "Bash(npx eslint *)",
+      "PowerShell(npx tsc --noEmit 2>&1)"
     ]
   }
 }
