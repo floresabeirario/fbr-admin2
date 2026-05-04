@@ -39,7 +39,17 @@
       "PowerShell(node --version)",
       "PowerShell(npm ls pdf-parse 2>$null)",
       "PowerShell(npm ls pdfjs-dist 2>$null)",
-      "PowerShell(npx --yes pdf2json -f \"c:\\\\Users\\\\maria\\\\Documents\\\\fbr-admin2\\\\public\\\\plataforma admin.pdf\" -c 2>&1)"
+      "PowerShell(npx --yes pdf2json -f \"c:\\\\Users\\\\maria\\\\Documents\\\\fbr-admin2\\\\public\\\\plataforma admin.pdf\" -c 2>&1)",
+      "Bash(python -c \"import openpyxl; print\\(openpyxl.__version__\\)\")",
+      "Bash(node -e \"const XLSX = require\\('xlsx'\\); const wb = XLSX.readFile\\('c:/Users/maria/Documents/fbr-admin2/public/mondayexport.xlsx'\\); console.log\\('Sheets:', wb.SheetNames\\); const sh = wb.Sheets[wb.SheetNames[0]]; const data = XLSX.utils.sheet_to_json\\(sh, {header:1, defval:null}\\); console.log\\('Rows:', data.length\\); console.log\\('First 3 rows:'\\); data.slice\\(0,3\\).forEach\\(\\(r,i\\)=>console.log\\(i, JSON.stringify\\(r\\)\\)\\);\")",
+      "Bash(node -e \"const XLSX = require\\('xlsx'\\); const wb = XLSX.readFile\\('./public/mondayexport.xlsx'\\); console.log\\('Sheets:', wb.SheetNames\\); wb.SheetNames.forEach\\(name => { const sh = wb.Sheets[name]; const data = XLSX.utils.sheet_to_json\\(sh, {header:1, defval:null}\\); console.log\\('=== Sheet:', name, '| Rows:', data.length, '==='\\); }\\);\")",
+      "Bash(node -e \"const XLSX = require\\('xlsx'\\); const wb = XLSX.readFile\\('./public/mondayexport.xlsx'\\); const sh = wb.Sheets[wb.SheetNames[0]]; const data = XLSX.utils.sheet_to_json\\(sh, {header:1, defval:null, raw:false}\\); console.log\\('Total rows:', data.length\\); data.slice\\(0,5\\).forEach\\(\\(r,i\\)=>{ console.log\\('--- Row', i, '---'\\); console.log\\(JSON.stringify\\(r\\)\\); }\\);\")",
+      "Bash(node -e \"const XLSX = require\\('xlsx'\\); const wb = XLSX.readFile\\('./public/mondayexport.xlsx'\\); const sh = wb.Sheets[wb.SheetNames[0]]; const data = XLSX.utils.sheet_to_json\\(sh, {header:1, defval:null, raw:false}\\); for\\(let i=3;i<data.length;i++\\){ const r = data[i]; if\\(r && r.some\\(c=>c\\)\\) console.log\\(i, '|', JSON.stringify\\(r\\)\\); }\")",
+      "Bash(node scripts/import-monday.js)",
+      "Bash(node -e \"const XLSX = require\\('xlsx'\\); const wb = XLSX.readFile\\('./public/mondayexport.xlsx', {cellDates:true}\\); const sh = wb.Sheets[wb.SheetNames[0]]; const data = XLSX.utils.sheet_to_json\\(sh, {header:1, defval:null, raw:true}\\); console.log\\('Row 5 sample:', JSON.stringify\\(data[5]\\)\\);\")",
+      "Bash(node -e \"const XLSX = require\\('xlsx'\\); const wb = XLSX.readFile\\('./public/mondayexport.xlsx', {cellDates:true}\\); const sh = wb.Sheets[wb.SheetNames[0]]; const data = XLSX.utils.sheet_to_json\\(sh, {header:1, defval:null, raw:true}\\); const v = data[5][8]; console.log\\('typeof:', typeof v, 'instanceof Date:', v instanceof Date, 'value:', v\\);\")",
+      "Bash(grep -oP \"event_date.{0,30}|VALUES.{0,200}\")",
+      "Bash(node -e \"const fs=require\\('fs'\\);const c=fs.readFileSync\\('supabase/migrations/006_import_monday.sql','utf8'\\);const lines=c.split\\('\\\\n'\\);for\\(const l of lines\\){if\\(l.startsWith\\('--'\\)&&!l.startsWith\\('-- =='\\)&&!l.startsWith\\('-- 006'\\)&&!l.startsWith\\('-- I'\\)&&!l.startsWith\\('-- G'\\)&&!l.startsWith\\('-- E'\\)\\)console.log\\(l\\);else if\\(l.includes\\('INSERT'\\)\\){const dates=l.match\\(/'\\(\\\\d{4}-\\\\d{2}-\\\\d{2}\\)'/g\\);console.log\\('  dates:',dates\\);}}\")"
     ]
   }
 }
