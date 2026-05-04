@@ -32,7 +32,14 @@
       "Bash(git rm *)",
       "Bash(npx eslint *)",
       "PowerShell(npx tsc --noEmit 2>&1)",
-      "Bash(echo \"EXIT=$?\")"
+      "Bash(echo \"EXIT=$?\")",
+      "Bash(pdfinfo \"c:\\\\Users\\\\maria\\\\Documents\\\\fbr-admin2\\\\public\\\\plataforma admin.pdf\")",
+      "PowerShell($pdf = \"c:\\\\Users\\\\maria\\\\Documents\\\\fbr-admin2\\\\public\\\\plataforma admin.pdf\"; \\(Get-Item $pdf\\).Length)",
+      "PowerShell(python -c \"import sys; print\\(sys.version\\)\")",
+      "PowerShell(node --version)",
+      "PowerShell(npm ls pdf-parse 2>$null)",
+      "PowerShell(npm ls pdfjs-dist 2>$null)",
+      "PowerShell(npx --yes pdf2json -f \"c:\\\\Users\\\\maria\\\\Documents\\\\fbr-admin2\\\\public\\\\plataforma admin.pdf\" -c 2>&1)"
     ]
   }
 }
