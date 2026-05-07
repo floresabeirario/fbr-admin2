@@ -58,7 +58,9 @@
       "Bash(powershell -Command \"\\(Get-Item 'c:\\\\Users\\\\maria\\\\Documents\\\\fbr-admin2\\\\public\\\\plataforma admin.pdf'\\).Length\")",
       "Bash(where pdftotext *)",
       "Bash(where pdftoppm *)",
-      "Bash(\"C:\\\\Program Files\\\\Git\\\\mingw64\\\\bin\\\\pdftotext.exe\" -layout \"c:\\\\Users\\\\maria\\\\Documents\\\\fbr-admin2\\\\public\\\\plataforma admin.pdf\" \"c:\\\\Users\\\\maria\\\\Documents\\\\fbr-admin2\\\\public\\\\plataforma admin.txt\")"
+      "Bash(\"C:\\\\Program Files\\\\Git\\\\mingw64\\\\bin\\\\pdftotext.exe\" -layout \"c:\\\\Users\\\\maria\\\\Documents\\\\fbr-admin2\\\\public\\\\plataforma admin.pdf\" \"c:\\\\Users\\\\maria\\\\Documents\\\\fbr-admin2\\\\public\\\\plataforma admin.txt\")",
+      "Bash(findstr /S /C:\"recharts\" c:\\\\Users\\\\maria\\\\Documents\\\\fbr-admin2\\\\package.json)",
+      "Bash(more +50)"
     ]
   }
 }
