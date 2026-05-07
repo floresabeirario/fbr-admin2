@@ -50,7 +50,8 @@
       "Bash(node -e \"const XLSX = require\\('xlsx'\\); const wb = XLSX.readFile\\('./public/mondayexport.xlsx', {cellDates:true}\\); const sh = wb.Sheets[wb.SheetNames[0]]; const data = XLSX.utils.sheet_to_json\\(sh, {header:1, defval:null, raw:true}\\); const v = data[5][8]; console.log\\('typeof:', typeof v, 'instanceof Date:', v instanceof Date, 'value:', v\\);\")",
       "Bash(grep -oP \"event_date.{0,30}|VALUES.{0,200}\")",
       "Bash(node -e \"const fs=require\\('fs'\\);const c=fs.readFileSync\\('supabase/migrations/006_import_monday.sql','utf8'\\);const lines=c.split\\('\\\\n'\\);for\\(const l of lines\\){if\\(l.startsWith\\('--'\\)&&!l.startsWith\\('-- =='\\)&&!l.startsWith\\('-- 006'\\)&&!l.startsWith\\('-- I'\\)&&!l.startsWith\\('-- G'\\)&&!l.startsWith\\('-- E'\\)\\)console.log\\(l\\);else if\\(l.includes\\('INSERT'\\)\\){const dates=l.match\\(/'\\(\\\\d{4}-\\\\d{2}-\\\\d{2}\\)'/g\\);console.log\\('  dates:',dates\\);}}\")",
-      "Bash(grep -E \"\\(vale-presente|^\\\\\\\\d+ problems\\)\")"
+      "Bash(grep -E \"\\(vale-presente|^\\\\\\\\d+ problems\\)\")",
+      "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\maria\\\\Documents\\\\fbr-admin2\\\\src\\\\app\\\\\\(admin\\)\" -Directory)"
     ]
   }
 }
