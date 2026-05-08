@@ -60,7 +60,13 @@
       "Bash(where pdftoppm *)",
       "Bash(\"C:\\\\Program Files\\\\Git\\\\mingw64\\\\bin\\\\pdftotext.exe\" -layout \"c:\\\\Users\\\\maria\\\\Documents\\\\fbr-admin2\\\\public\\\\plataforma admin.pdf\" \"c:\\\\Users\\\\maria\\\\Documents\\\\fbr-admin2\\\\public\\\\plataforma admin.txt\")",
       "Bash(findstr /S /C:\"recharts\" c:\\\\Users\\\\maria\\\\Documents\\\\fbr-admin2\\\\package.json)",
-      "Bash(more +50)"
+      "Bash(more +50)",
+      "Bash(mkdir \"c:\\\\Users\\\\maria\\\\Documents\\\\fbr-admin2\\\\src\\\\app\\\\\\(admin\\)\\\\parcerias\\\\[id]\" 2>nul)",
+      "Bash(cp public/favicon/favicon.ico src/app/favicon.ico)"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\maria\\Documents\\fbr-admin2\\src\\app\\(admin)\\parcerias",
+      "C:\\Users\\maria\\Documents\\fbr-admin2\\public\\favicon"
     ]
   }
 }
