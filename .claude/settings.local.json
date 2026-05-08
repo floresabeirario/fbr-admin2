@@ -70,11 +70,17 @@
       "Bash(node scripts/import-monday-parceiros.js)",
       "Bash(node -e ' *)",
       "Bash(node scripts/_debug-phone-extraction.js)",
-      "Bash(echo \"exit=$?\")"
+      "Bash(echo \"exit=$?\")",
+      "PowerShell(gh repo view floresabeirario/fbr-website --json name,description,defaultBranchRef,languages,primaryLanguage 2>&1)",
+      "Bash(git clone *)",
+      "Bash(ls -la /tmp/fbr-website 2>&1 | head -30)",
+      "Read(//tmp/**)",
+      "Bash(rm -rf /tmp/fbr-website 2>&1; echo \"cleanup done\")"
     ],
     "additionalDirectories": [
       "c:\\Users\\maria\\Documents\\fbr-admin2\\src\\app\\(admin)\\parcerias",
-      "C:\\Users\\maria\\Documents\\fbr-admin2\\public\\favicon"
+      "C:\\Users\\maria\\Documents\\fbr-admin2\\public\\favicon",
+      "\\tmp"
     ]
   }
 }
