@@ -62,7 +62,15 @@
       "Bash(findstr /S /C:\"recharts\" c:\\\\Users\\\\maria\\\\Documents\\\\fbr-admin2\\\\package.json)",
       "Bash(more +50)",
       "Bash(mkdir \"c:\\\\Users\\\\maria\\\\Documents\\\\fbr-admin2\\\\src\\\\app\\\\\\(admin\\)\\\\parcerias\\\\[id]\" 2>nul)",
-      "Bash(cp public/favicon/favicon.ico src/app/favicon.ico)"
+      "Bash(cp public/favicon/favicon.ico src/app/favicon.ico)",
+      "Bash(node -e \"console.log\\(require.resolve\\('xlsx'\\)\\)\")",
+      "Bash(npm ls *)",
+      "Bash(node scripts/read-monday-parceiros.js)",
+      "Bash(node scripts/parse-monday-parceiros.js)",
+      "Bash(node scripts/import-monday-parceiros.js)",
+      "Bash(node -e ' *)",
+      "Bash(node scripts/_debug-phone-extraction.js)",
+      "Bash(echo \"exit=$?\")"
     ],
     "additionalDirectories": [
       "c:\\Users\\maria\\Documents\\fbr-admin2\\src\\app\\(admin)\\parcerias",
