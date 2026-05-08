@@ -1,0 +1,843 @@
+prompt para claude:
+
+domino desta plataforma interna : admin.floresabeirario.pt
+Neste momento uso o Monday para gerir os clientes da Flores a beira rio, quero criar eu uma espécie de
+Monday on drugs que se encaixe completamente Às necessidades da FBR e completamente gratuito. para isto
+pretendo usar supabase + github + vercel. posso migrar manualmente as encomendas atuais que estão no
+monday, não são muitas.
+
+Objetivos desta plataforma:
+gerir, Receber e visualizar respostas de clientes ao formulário de reserva de preservação
+gerir, Receber e visualizar respostas de clientes ao formulário de oferta de vale presente
+gerir os contactos com as parcerias (wedding planners, floristas, etc)
+
+Dashboard:
+
+a plataforma deve ter 3 utilizadores - 2 admin (login por Google OAuth via Supabase ). o 3o utilizador não tem
+permissão para alterar nada em nenhuma aba exceto na aba parcerias e nas listas de tarefas da pagina inicial
+(dashboard) - pode editar, criar e apagar tarefas. tudo o resto deve conseguir apenas visualizar. enquanto admin
+quero poder alterar estas desifnições de users facilmente.
+todos devemos conseguir assign tarefas uns aos outros. devemos conseguir ver as tarefas uns dos outros e
+ordená-las por grau de importância e colocar data (prazo) e com possibilidade de criar alerta por email para
+lembrar a certo dia e certa hora.
+deve aparecer:
+
+    - a minha check list (e conseguirmos alterar para a check list de outro admin, mas por default mostra a
+         checklist do admin loggado)
+
+    - afazeres - tarefas globais (assigned a alguém, ou não)
+    - devo conseguir colocar um nível de importância em cada tarefa
+
+secção sumária da aba recolhas agendadas,
+dia, hora localização.
+alertas para aproximaçã de data de recolha
+
+Dashboard de métricas
+O dashboard apresenta métricas atualizadas do negócio. Não precisa de ser tempo real estrito (que consome
+muitos recursos), basta atualização automática quando o utilizador faz refresh da página. Mostrar sempre data
+e hora da última atualização.
+Métricas principais a apresentar
+Receita do mês atual (em ), com comparação face ao mesmo mês do ano anterior (em percentagem, com seta
+verde ou vermelha).
+Receita acumulada do ano corrente, com comparação face ao ano anterior à mesma data.
+Número de encomendas novas no mês atual, com comparação face ao mês anterior.
+Número de encomendas em curso por estado (mostrar gráfico de barras horizontais com contagem por cada
+estado da aba preservação de flores).
+Tempo médio de conclusão por encomenda (calculado entre a data de criação e a data de entrega do quadro
+final). Mostrar média global e média dos últimos 6 meses.
+Número de vales presente vendidos no mês, e percentagem que já foi convertida em preservação efetiva.
+Métricas de marketing e parcerias
+Top 5 canais de aquisição (resposta à pergunta "Como conheceu a Flores à Beira Rio?") com número absoluto e
+percentagem do total. Atualizado mensalmente.
+Top 5 parceiros que mais clientes trouxeram nos últimos 12 meses, com receita gerada e comissões pagas.
+Métricas de produto
+Tamanho de moldura mais vendido (gráfico circular com percentagens).
+Tipo de fundo mais escolhido (gráfico circular).
+Percentagem de encomendas com extras (quadros pequenos, ornamentos, pendentes).
+Tipo de evento mais comum (casamento, batizado, funeral, etc).
+Métricas operacionais
+Encomendas com data de evento nos próximos 7 dias (alerta visual).
+Encomendas paradas no mesmo estado há mais de 14 dias (alerta visual a amarelo).
+
+Pré reservas sem contacto há mais de 4 dias (alerta visual a vermelho).
+
+Vales presente próximos do fim de validade (faltam menos de 3 meses).
+
+
+Filtros do dashboard
+
+No topo do dashboard, permitir filtrar todas as métricas por intervalo de tempo: este mês, mês passado,
+últimos 3 meses, últimos 6 meses, este ano, ano passado, ou intervalo personalizado (date picker).
+
+Em baixo do dashboard, secção "Insights" gerada por análise simples dos dados, com observações úteis.
+Exemplos: "Setembro foi o mês com mais reservas nos últimos 2 anos", "A parceira X trouxe 5 clientes este
+trimestre, considera enviar agradecimento", "3 encomendas estão paradas no mesmo estado há mais de 3
+semanas".
+
+aba Preservação de flores:
+
+Visualização tabela, timeline, calendário e workbench
+A tabela deve mostrar os seguintes campos (vou diferenciar em cada campo quem é que preenche, se é o cliente
+(user) através do form do site ou se sou eu (admin), para gestão pessoal da encomenda. o form deverá ser criado
+de raiz integrado com o Supabase, substituindo o atual que está no site que está integrado com o monday. ps.
+decide tu por que ordem faz mais sentido ter cada campo.
+
+    - Nome na encomenda (user)
+    - Preferência de contacto (user), opções
+
+              - WhatsApp
+              - E-mail
+    - endereço de email (user)
+    - nr de telemóvel (user)
+    - orçamento (admin)
+    - Pagamentos (admin)
+              - 100% pago
+              - 70% pago
+              - 30% pago (sinal)
+              - 30% por pagar (sinal)
+              - 100% por pagar
+Sempre que é feito um pagamento, ou seja quando o estado "pagamentos" muda, quero receber um alerta para
+anexar o/os ficheiro(s) de comprovativo de pagamento.
+Sempre que é feito um pagamento, quero que me perguntes se o cliente pediu nif e se eu clicar sim, revelar um
+campo "nif" para eu lá colocar o número nif do cliente, ficando guardado. Quero poder criar uma tarefa
+facilmente para assign a um membro da minha equipa a emissão da fatura no portal das finanças. quero
+também poder anexar o ficheiro da fatura emitido.
+
+    - Comissão parceria (admin) - número em 
+    - Comissão paga? (admin)
+
+              - N/A
+              - Parceiro informado
+              - A aguardar pagamento de cliente
+              - Paga
+              - A aguardar resposta de parceiro
+              - Não aceita comissão
+Quero ter a possiblidade de identificar o parceiro que recomendou o cliente, por isso quero poder aqui
+pesquisar a aba dos parceiros, e clicar naquele que corrersponde À recomendação.
+    - Data do evento (user)
+    - Tipo de evento (user)
+              - Casamento
+              - Batizado
+              - Funeral
+              - Pedido de Casamento
+              - Outro
+    - (Se a resposta anterior for casamento) Qual o nome dos noivos? (user)
+    - Localização do evento (user)
+    - Estado (admin)
+              - Entrega de flores por agendar
+              - Entrega de flores agendada
+              - Flores enviadas
+              - Flores recebidas
+              - Flores na prensa
+              - Reconstrução botânica
+              - A compor o design do quadro
+              - A aguardar aprovação da composição
+              - A ser emoldurado
+              - Emoldurado
+              - A ser fotografado
+              - Quadro pronto (embalado)
+              - Quadro enviado
+- Quadro recebido
+
+    - Cancelado                               (user) (mas com possibilidade de admin alterar este
+
+- Como pretende enviar as flores para nós?
+
+campo)
+
+- Entrega em mãos em Coimbra
+
+- Envio por CTT/transportadora para o estúdio (custos a cargo do cliente) (caso este campo seja
+
+        selecionado, devo ter a possibilidade de adicionar os detalhes de envio organizados com o
+
+        cliente (dia, hora/janela horária, morada, notas, anexo de documento da guia dos ctt).
+
+        alimentando assim a aba "entregas e recolhas" )
+
+- Recolha no evento por parte da Flores à beira-rio - mediante orçamento e disponibilidade (caso
+
+        este campo seja selecionado, devo ter a possibilidade de adicionar os detalhes recolha
+
+        organizados com o cliente (dia, hora/janela horária, localização,morada, notas). alimentando
+
+        assim a aba "entregas e recolhas" )
+
+- Ainda não sei
+
+- Custo de envio flores (admin) - número em 
+
+- Custos de envio de flores pagos? (admin)
+
+- Pago
+
+- Não pago
+
+- N/A
+
+ - Tipo de flores no arranjo (user)           (user) (mas com possibilidade de admin alterar este
+
+- Como prefere receber o quadro finalizado?
+
+campo)
+
+- Entrega em mãos em Coimbra
+
+- Envio por CTT/transportadora para o estúdio (custos a cargo do cliente) (caso este campo seja
+
+        selecionado, devo ter a possibilidade de adicionar os detalhes de envio organizados com o
+
+        cliente (dia, hora/janela horária, morada, notas, anexo de documento da guia dos ctt).
+
+        alimentando assim a aba "entregas e recolhas" )
+
+- Ainda não sei
+
+- Custo de envio quadro (admin) - número em 
+
+- Custos de envio de quadro pagos? (admin)
+
+- Pago
+
+- Não pago
+
+- N/A
+
+- Que tipo de fundo gostaria para o seu quadro? (user)
+
+- Transparente (vidro sobre vidro)
+
+- Preto
+
+- Branco
+
+- Fotografia (esta opção tem o custo adicional da impressão profissional da fotografia)
+
+- Cor (especificar)
+
+- Gostaria que fossem vocês a escolher
+         - Ainda não sei
+- Tamanho de moldura pretendido (user)
+
+         - 30x40cm
+         - 40x50cm
+         - 50x70cm
+         - Gostaria que fossem vocês a escolher
+         - Ainda não sei
+- Gostaria de incluir algum elemento extra no seu quadro? (user)
+         - Não pretendo incluir extras
+         - Votos manuscritos
+         - Convite do casamento
+         - Fitas, tecidos ou rendas
+         - Fotografia
+         - Joia ou medalha
+         - Coleira de animal
+         - Cartas ou bilhetes
+         - Outro (especifique abaixo)
+
+                   - Que outros elementos gostaria de incluir no seu quadro?
+- Além do quadro principal, gostaria de acrescentar quadros extra em formato mais pequeno? (user)
+
+         - Sim, quero acrescentar quadros extra
+         - Não, apenas o quadro principal
+         - Gostava de receber mais informações
+- (se a resposta anterior for sim) Quantos quadros extra em formato pequeno gostaria de adicionar? (user)
+- Além do quadro principal, gostaria de acrescentar ornamentos de Natal?
+         - Sim, quero acrescentar ornamentos de natal
+         - Não, apenas o quadro principal
+         - Gostava de receber mais informações
+- (se a resposta anterior for sim) Quantos ornamentos de natal gostaria de adicionar? (user)
+- Além do quadro principal, gostaria de acrescentar pendentes para colares?
+         - Sim, quero acrescentar pendentes
+         - Não, apenas o quadro principal
+         - Gostava de receber mais informações
+- (se a resposta anterior for sim) Quantos pendentes gostaria de adicionar? (user)
+- Como conheceu a Flores à Beira-Rio? (user)
+              - Através do Instagram
+              - Através do Facebook
+              - Através do casamentos.pt
+              - Pesquisa no Google
+              - Ofereceram-me um Vale-Presente para preservação
+              - Recomendação de florista
+              - Recomendação de alguém que já contratou o serviço anteriormente
+              - Outro (especificar abaixo)
+    - (se a resposta anterior for outro) Conte-nos como conheceu a Flores à Beira-Rio (user)
+    - (se a resposta anterior for florista) Qual a florista que lhe falou de nós? (user)
+    - (se a resposta for vale-presente) Indique-nos por favor o código presente no seu vale presente (user) -
+         deve ter um link para a "aba status" correspondente (através do código inserido).
+    - Notas adicionais (opcional) (user)
+    - Código do Cupão 5% (em cada encomenda vai um papel com código de desconto para uma preservação
+         futura) (admin)
+    - Validade do cupão (admin)
+    - Cupão de 5% (admin)
+              - utilizado
+              - Não utilizado
+              - N/A
+    - Cliente já deu feedback do quadro? (admin)
+              - Deu feedback
+              - Já pedido | Não disse nada
+              - Não disse nada
+              - N/A
+    - Data entrega do quadro final (este registo serve para eu depois conseguir calcular quanto tempo demora
+         em média da encomenda) (admin)
+    - ID da encomenda (quero que seja gerado automaticamente um código alfanumérico de 16 digitos,
+         aquando a criação de uma nova encomenda, diferente de qualquer outro já existente)
+Cada encomenda deve estar inserida num destes grupos:
+Pré-reservas (quando está nos estados Entrega de flores por agendar)
+Sem-resposta (quando está no estado Entrega de flores por agendar há mais de 4 dias)
+    Reservas ( quando está nos estados Entrega de flores agendada, Flores enviadas, flores recebidas)
+    Preservação e design (quando está nos estados Flores na prensa, Reconstrução botânica, A compor o design do
+    quadro, A aguardar aprovação da composição)
+    Finalização (quando está nos estados A ser emoldurado, Emoldurado, A ser fotografado, Quadro pronto
+    (embalado), Quadro enviado)
+    Concluídos (quando está no estado Quadro recebido)
+    Cancelamentos (quando está no estado cancelado )
+    gostaria que no grupo "pré-reservas" houvesse uma distinção entre os contactados e os (ainda) não contactados,
+    mas não sei de que forma. (input por admin)
+
+                   - A visualização "Calendário" deve mostrar as "Data do evento" em modo calendário. quando
+                        clico, deve abrir o workbench da encomenda respectiva.
+
+    Automações:
+
+         - quando uma encomenda passa para o estado "100% pago, ou 70% pago, ou 30% pago (sinal)", criar um
+              evento no calendário google do info@floresabeirario.pt com a "data do evento". só é criado um evento
+              por encomenda.
+
+- quando uma nova encomenda é criada, eis os defaults que cada campo preenchido por admin deve ter:
+                   - Pagamentos - 100% por pagar
+                   - orçamento - (para este campo o valor do orçamento deve ser calculado automáticamente
+                        consoante o tamanho do quadro escolhido e as opções extra escolhidas (quadros extra em
+                        fomato mais pequeno, ornamentos de natal, pendentes para colar). para isto tens saber os preços
+                        de cada coisa. quero que na ABA "FINANÇAS", tenhas lá um campo para eu colocar o preço do
+                        cliente para cada item que vendemos. e que para o calculo do orçamento que vás lá buscar os
+                        valores correspondentes. quero desta forma pois de um ano para o outro posso querer aumentar
+                        os preços e esse aumento deve refletir-se nos calculos apenas das encomendas criandas depois
+                        desse aumento de preço. ou seja, orçamento de encomendas antigas não devem nunca ser
+                        reclaculados com os preços mais recentes, devem ser calculados com os preços em vigor no
+                        mmento em que foi calculada a encomenda.). se eu quiser editar manualmente um orçamento
+                        (dar desconto para amigos, por exemplo), quero ter possibilidade de editar este campo.
+                   - Comissão parceria - 0 por default.
+                   - Comissão paga? - N/A por default
+                   - Estado - "Entrega de flores por agendar" por default
+                   - Custo de envio flores - 0 por default
+                   - Custos de envio pagos? - "N/A" por default
+                   - Código do Cupão 5% - gerado quando encomenda passa para estado "A ser emoldurado".
+                        Código de 4 digitos alfanúmérico, difernte de qualquer outro já existente.
+              - Validade do cupão - cálculo de 2 anos após data do campo "Data entrega do quadro final".
+              - Cupão de 5% - N/A por default e passa para "Não utilizado" quando encomenda passa para
+
+                   estado "A ser emoldurado"
+              - Cliente já deu feedback do quadro? - N/A por default
+              -
+
+Workbench
+
+    - Quando clico em cada encomenda no modo tabela, timeline ou calendário, deve aparecer uma janela
+         por cima com o workbench.
+
+    - deve ter um link para a "aba status" correspondente.
+    - deve ter toda a informação acerca daquela encomenda.
+    - deve ter uma foto das flores associadas àquela encomenda (upload feito por admin)
+    - deve ter link para a pasta da drive de cada cliente (cada cliente tem uma pasta na drive que contém
+
+         todas as fotos e videos relacionados com a encomenda deles). a pasta deve ser criada automaticamente
+         quando criamos a encomenda, atraves do Google Drive API
+    - Aqui devo ser informada do idioma em que o cliente preencheu o formulário.
+    - Galeria de inspiração por encomenda - no workbench, uma secção onde podes guardar imagens de
+         referência/links de reels, videos ou inspiração para aquela composição específica, para consultares
+         enquanto trabalhas. upload de imagens são guardados na drive, e links, mostra previw dos links
+    - quero conseguir ver aqui o histórico de todas as conversas com a cliente (quer por whatsapp quer por
+         email) com um botão que chama um agente de AI para sugerir uma resposta.
+    - Gestão de Comunicações com o Cliente
+Cada encomenda tem um painel dedicado ao histórico de comunicações com o cliente, que agrega tanto emails
+como mensagens de WhatsApp numa linha de tempo única e organizada.
+    - Integração com Gmail.
+A plataforma liga-se à conta Gmail da Flores Beira-rio e importa automaticamente todos os emails trocados
+com cada cliente, associando-os à respetiva encomenda através do endereço de email. O histórico de emails
+fica visível diretamente no detalhe da encomenda, sem necessidade de abrir o Gmail.
+    - Histórico de WhatsApp
+Como o WhatsApp não permite integração automática gratuita, o histórico de conversas é alimentado
+manualmente de duas formas. A primeira é por imagem, em que o utilizador carrega um print da conversa do
+WhatsApp e a plataforma lê a imagem automaticamente, extrai o texto e reconstrói a conversa. A segunda é
+por texto, em que o utilizador escreve diretamente uma nota como por exemplo "cliente perguntou "fazem
+entrega ao domicílio?"" e essa informação é adicionada à conversa.
+Em ambos os casos, o resultado final é apresentado visualmente como uma conversa real, com balões de
+mensagem tal como no WhatsApp. As mensagens do cliente aparecem à esquerda e as respostas da Flores
+Beirario aparecem à direita, com o nome de quem escreveu e a hora se disponível. Cada print carregado é
+convertido e adicionado à conversa existente de forma contínua, construindo ao longo do tempo um histórico
+completo e fácil de ler.
+
+    - Assistente de Resposta
+No detalhe de cada encomenda existe um painel chamado Assistente de Resposta. Este assistente lê todo o
+histórico acumulado da encomenda, tanto emails como conversas de WhatsApp, e sugere uma resposta
+adequada ao contexto. O utilizador pode aceitar a sugestão, editá-la, e copiá-la com um clique para colar
+diretamente no Gmail ou no WhatsApp. O assistente é alimentado pela API da Anthropic
+
+Vale-presente
+
+recepção das respostas do form do vale-presente e gestão de cada encomenda de vale-presente
+Visualização tabela e workbench ao clicar em cada encomenda.
+A tabela deve mostrar os seguintes campos (vou diferenciar em cada campo quem é que preenche, se é o cliente
+(user) através do form do site ou se sou eu (admin), para gestão pessoal da encomenda. o form deverá ser criado
+de raiz integrado com o Supabase, substituindo o atual que está no site que está integrado com o monday. ps.
+decide tu por que ordem faz mais sentido ter cada campo.
+
+Dados do remetente
+    - Nome * (user)
+    - Como prefere ser contactado/a? * (user)
+              - WhatsApp
+              - Email
+
+    - (se responder whatsapp na pergunta anterior) Número de telemóvel * (user)
+
+    - E-mail de contacto * (Pedimos um e-mail como contacto alternativo.) (user)
+O vale
+
+    - Nome da(s) pessoa(s) a quem se destina * (Este nome será utilizado para personalizar o vale.) (user)
+    - Mensagem personalizada (opcional) (user)
+    - Valor do vale () * (Valor mínimo: 300, correspondentes ao quadro mais pequeno. Consulte a nossa
+
+         página Opções e Preços para conhecer os tamanhos dos quadros.) (user)
+Entrega
+    - Quero que o vale seja entregue a * (user)
+              - Mim (remetente)
+              - Diretamente ao destinatário
+
+    - Tipo de vale * (user)
+              - Digital - por email ou Whatsapp (gratuito)
+              - Fìsico - cartão com envelope (9 + portes)
+
+    - (se escolherem destinatário e digital) E-mail ou WhatsApp do destinatário * (Utilizado apenas para
+         enviar o vale.) (user)
+
+    - (se escolherem destinatário e físico) Morada para envio * (user)
+    - (se escolherem destinatário) Data ideal para envio (Deixe em branco se for indiferente.) (user)
+Outros
+    - Comentários ou pedidos especiais (opcional) (Caso necessite de receber o vale em menos de 3 dias úteis,
+
+         informe-nos aqui para que possamos priorizar o seu pedido.) (user)
+    - Como conheceu a Flores à Beira-Rio? (user)
+
+              - Através do Instagram
+              - Através do Facebook
+              - Através do casamentos.pt
+              - Pesquisa no Google
+              - Ofereceram-me um Vale-Presente para preservação
+              - Recomendação de florista
+              - Recomendação de alguém que já contratou o serviço anteriormente
+              - Outro (especificar abaixo)
+    - (se a resposta anterior for outro) Conte-nos como conheceu a Flores à Beira-Rio (user)
+    - (se a resposta anterior for florista) Qual a florista que lhe falou de nós? (user)
+    - (se a resposta for vale-presente) Indique-nos por favor o código presente no seu vale presente (user)
+    - Pagamentos (admin)
+              - 100% pago
+              - 100% por pagar
+Sempre que é feito um pagamento, ou seja quando o estado "pagamentos" muda, quero receber um alerta para
+anexar o/os ficheiro(s) de comprovativo de pagamento.
+Quero que me perguntes se o cliente pediu nif e se eu clicar sim, revelar um campo "nif" para eu lá colocar o
+número nif do cliente, ficando guardado. Quero poder criar uma tarefa facilmente para assign a um membro da
+minha equipa a emissão da fatura no portal das finanças. quero também poder anexar o ficheiro da fatura
+emitido.
+    - Envio do vale (admin)
+                  - Enviado
+                  - Agendado
+                  - Não agendado
+        - Utilização (admin)
+                  - Preservação agendada
+                  - Preservação não agendada
+        - Código (admin) (quero que seja gerado um código alfanumérico de 6 dígitos, diferente de qualquer
+             outro já existente )
+        - Validade (admin) - a validade deve ser automaticamente gerada aquando a criação de um novo vale. a
+             data de validade é 2 anos após a data de criação do vale.
+    Quando um vale-presente novo é criado, eis os defaults que cada campo preenchido por admin deve ter:
+        - Pagamentos - default "100% por pagar"
+        - recepção do vale - default "Não agendado"
+        - Utilização - default "preservação não agendada"
+
+    a info desta aba alimenta o site voucher.floresabeirario.pt . os valores dos campos código, nome do remetente,
+    nome do destinatário, valor, mensagem personalizada, data de validade (mostra só mês e ano) - vão ser
+    visualizados no site voucher.floresabeirario.pt que é onde as pessoas podem aceder ao seu voucher digital, com
+    informações personalizadas por estes campos.
+
+    Cada encomenda deve estar inserida num destes grupos:
+    Pré-reservas (quando "pagamentos" está no estado 100% por pagar)
+    Reservas (quando "pagamentos" está no estado 100% pago)
+    gostaria no grupo "pré reservas", que houvesse uma distinção entre os contactados e os (ainda) não contactados,
+    mas não sei de que forma. (input por admin)
+
+    Status
+
+    a info desta aba alimenta o site status.floresabeirario.pt . os valores dos campos:
+        - id - a ir buscar à aba de preservação de flores
+        - nome da encomenda - a ir buscar à aba de preservação de flores
+        - Estado - ir buscar à aba de preservação de flores
+        - Mensagem - A cada estado deve estar associada uma mensagem que deverá ser mostrada consoante o
+             estado atual da encomenda:
+
+    
+
+Nr  estado (ir buscar a aba "preservação de  Mensagem
+
+    flores")
+                                           O primeiro passo para eternizar a sua memória! Já reservámos o
+
+1  Entrega das flores agendada / Flower nosso calendário para receber o seu bouquet. / The first step to
+
+   delivery scheduled                      eternalizing your memory! We have already reserved our calendar
+
+                                           to receive your bouquet.
+
+                                           As suas flores já chegaram ao nosso atelier! Vamos agora iniciar o
+
+                                           processo de tratamento e preservação para que durem para
+
+2  Flores recebidas / Flowers received     sempre. / Your flowers have arrived at our studio! We will now
+
+                                           begin the treatment and preservation process so they can last
+
+                                           forever.
+
+                                           As suas flores estão agora a ser preservadas. Este passo é o segredo
+
+                                           para que fiquem deslumbrantes durante muitos anos. Estamos a
+
+                                           cuidar de todo o processo e garantimos que a espera vai valer a
+
+3  Flores na prensa / Flowers in the press pena, vão ficar lindas! / Your flowers are now being preserved. This
+
+                                           step is the secret to keeping them stunning for many years. We are
+
+                                           taking care of the whole process and we guarantee the wait will be
+
+                                           worth it, they are going to look beautiful!
+
+                                           Algumas flores exigem um cuidado extra e estão a ser
+
+4  Reconstrução botânica / Botanical       reconstruídas pétala a pétala para recuperarem a sua forma
+
+   reconstruction                          original. / Some flowers require extra care and are being
+
+                                           reconstructed petal by petal to regain their original shape.
+
+            A compor o design do quadro /  Com as flores devidamente preservadas, iniciámos o estudo
+5                                          artístico da composição para criar um design harmonioso. / With
+                                           the flowers properly preserved, we have begun the artistic study of
+            Designing the artwork          the composition to create a harmonious design.
+
+                                           A proposta de composição do seu quadro está pronta para ser
+
+   A aguardar aprovação da composição /    validada por si. Assim que estiver feliz com o resultado,
+
+6  Awaiting design approval                procederemos à colagem definitiva. / The design proposal for your
+
+                                           frame is ready for your validation. Once you are happy with the
+
+                                           result, we will proceed with the final mounting.
+
+                                           O seu quadro seguiu para uma casa de molduras profissional em
+
+                                           Coimbra. Todas as nossas molduras são feitas à medida, num
+
+7  A ser emoldurado / Being framed         processo que pode demorar até 15 dias. / Your artwork has been
+
+                                           sent to a professional framing house in Coimbra. All our frames
+
+                                           are custom-made, a process that can take up to 15 days.
+            A ser fotografado / Being  O seu quadro já regressou da molduraria! Estamos agora a
+8                                      fotografar a peça para o nosso registo e redes sociais. / Your frame
+                                       is back from the framer! We are now photographing the piece for
+            photographed               our records and social media.
+
+9   Quadro pronto / Artwork ready      A sua peça está terminada e o resultado ficou deslumbrante!
+                                       Estamos a preparar a embalagem. / Your piece is finished and the
+                                       result is stunning! We are preparing the packaging.
+
+10  Quadro enviado / Artwork shipped   Boas notícias: a sua memória já está a caminho de casa! / Great
+
+                                       news: your memory is on its way home!
+
+                                       Esperamos que tenha adorado o resultado final. Obrigado por nos
+
+                                       confiar estas flores tão especiais!
+
+                                       Se teve uma boa experiência connosco, deixe-nos o seu feedback e
+
+                                       uma foto da peça final no nosso perfil:
+
+11  Quadro recebido / Artwork received https://maps.app.goo.gl/qGGdyE8mo2kdNBmm7 /
+
+                                       We hope you loved the final result. Thank you for trusting us with
+
+                                       such special flowers! If you had a good experience with us, please
+
+                                       leave your feedback and a photo of the final piece on our profile:
+
+                                       https://maps.app.goo.gl/qGGdyE8mo2kdNBmm7
+
+    há estados que estão na aba "preservação de flores" mas não estão nesta tabela. a razão para isto é que quero
+    que o site de acompanhamento da encomenda mostre uma "timeline", apenas com os estados desta tabela. eis a
+    chave do que mostrar:
+    Quando a encomenda está no estado....
+
+                  - Entrega de flores por agendar (no status mostrar Entrega de flores por agendar)
+                  - Entrega de flores agendada (no status mostrar Entrega de flores agendada)
+                  - Flores enviadas (no status mostrar Entrega de flores agendada)
+                  - Flores recebidas (no status mostrar Flores recebidas)
+                  - Flores na prensa (no status mostrar Flores na prensa)
+                  - Reconstrução botânica (no status mostrar Reconstrução botânica)
+                  - A compor o design do quadro (no status mostrar A compor o design do quadro)
+                  - A aguardar aprovação da composição (no status mostrar A aguardar aprovação da composição)
+                  - A ser emoldurado (no status mostrar A ser emoldurado)
+                  - Emoldurado (no status mostrar A ser emoldurado)
+                  - A ser fotografado (no status mostrar A ser fotografado)
+                  - Quadro pronto (embalado) (no status mostrar Quadro pronto)
+                  - Quadro enviado (no status mostrar Quadro enviado)
+                  - Quadro recebido (no status mostrar Quadro recebido)
+                  - Cancelado (no status mostrar Entrega de flores por agendar)
+Nesta aba status, quero poder alterar a mensagem para uma personalizada, para caso eu precise de escrever
+algo diferente em algum caso especial. 
+
+    - última atualização - mostra uma data, input por admin
+    - data de previsão de entrega - default "-". Data deverá ser gerada automaticamente quando o estado
+
+         passar para "Flores na prensa"- gerar data 6 meses após a data em que os estado mudou para "flores na
+         prensa" (mostrar apenas mês e ano). este campo pode ser alterado por admin
+
+estes campos vão ser visualizados no site status.floresabeirario.pt que é onde as pessoas podem acompanhar as
+suas encomendas de preservação de flores, com informações personalizadas e atualizadas em tempo real por
+estes campos. Quero poder selecionar se quero que o cliente veja as informações no site status em PT, em EN
+ou em AMBOS.
+
+Healthchecks
+
+Aba de verificação se todos os forms do site, bases de dados, SEO e etc estão a funcionar. Não meter funcional
+já. deixar só o placeholder para mais tarde me focar em desenvolver isso.
+
+Ecossistema
+
+fluxograma ou algo do género com as plataformas/links todos com que trabalhamos.
+https://web.whatsapp.com/
+https://appserver.ctt.pt/CompanyPortal/
+https://www.instagram.com/floresabeirario/
+https://www.facebook.com/floresabeirario/
+https://mail.google.com/mail/u/0/?tab=rm&ogbl
+dominio - https://clientes.site.pt/index.php?rp=/login
+https://search.google.com/search-console?resource_id=sc-domain%3Afloresabeirario.pt
+https://adsmanager.facebook.com/adsmanager/manage/campaigns?act=747444631516860&business_id=1899083
+453715516&nav_entry_point=fbs_ad_account_open_in_ads_manager_button&filter_set=campaign.impressions
+-NUMBER%1EGREATER_THAN%1E%220%22&nav_source=facebook_business_suite
+https://www.floresabeirario.pt/
+
+Finanças
+
+gestão de custos e de lucro, onde posso input uma despesa e receber todos os tipos de estatísticas tipo mês em
+que recebemos mais reservas,
+atençao: o calculo dos valores faturados com presservação de flores + vale presente teêm que ter algo imprtante
+em consideração. caso um vale presente esteja no estado "Utilização - Preservação agendada", o "Valor do vale"
+não deve ser contabilizado para o calclo de faturação, pois ficaria duplicado, dado que na aba "preservação de
+flores", o valor de todos os produtos escolhidos vai ser contabilizado no campo "oraçamento". há a
+possibilidade de alguém comprar um vale presente para oferecer e depois acabr por nunca ser utilizado, ou seja
+fica no estado "Preservação não agendada", pois isso é que vales no estado "Preservação não agendada" devem
+ser contabilizados para calculos e vales no estado "Preservação agendada " nao devem ser contabilizados, pois
+passaram para a aba "preservação de flores".
+-tracking de despesas
+
+Parcerias
+
+aba de gestão total de parcerias com a flores a beira rio. aqui quero ver um overview com gráficos e estatísticas
+e lista de tarefas relacionadas apenas com parcerias.
+Visualização tabela e workbench. quando clico num parceiro na tabela deve abrir o workbench.
+Deve ter sub-abas de wedding planners, floristas, quintas de eventos e outros contactos.
+cada sub aba deve ter 5 grupos: por contacar, pendente, aceite, confirmado e rejeitado.
+Os inputs de cada parceria são feitos pelos admin.
+campos:
+parceiro (nome da empresa)
+estado
+
+  - Por contactar
+  - Pendente (falámos com ele mas não disse nem que sim nem que não)
+  - Tentativa de contacto (não atendeu o telemovel)
+  - Rejeitado (disse que não aceita a parceria)
+  - Aceite (quando falámos com ele disse que sim, mandámos email a confirmar, não respondeu.)
+  - Confirmado (confirmou a parceria. )
+
+Ações
+
+  - Enviar Email e Whatsapp
+  - Enviar email/form
+  - Enviar WhatsApp
+  - Ligar
+  - A aguardar resposta
+  - Contactar por redes sociais
+  - Ligar em Inglês
+
+    - Nada a fazer
+Devo conseguir assign ações a membros da equipa.
+Email (do parceiro)
+telemovel (Às vezes têm mais do que 1 telemóvel, devo poder adicionar quantos eu quiser)
+responsável (nome da pessoa com quem falámos)
+notas (acrescentar o que sabemos sobre aquele parceiro, por ex. "foi recomendado pela quinta das lagrimas")
+local de atuação (regiões ou locais onde o parrceiro está localizado).
+links (redes sociais ou site deste parceiro. devo conseguir meter mais do que 1 )
+aceita 10% de comissão?
+
+    - Sim
+    - Não (esta info é muito importante pois quando voltamos a falar com um parceiro, devemos nos lembrar
+
+         sempre dessa info)
+Atualizações: coloccação e descrição de histórico de cada interação de foi tida com aquele parceiro, para nos
+lembrarmos e podermos consultar mais tarde.
+no workbench Possibilidade de criar tarefa /lembrete relacionado com um parceiro.
+clientes recomendados:
+
+    - info alimentada pelas abas "preservação de flores e vale-presente"
+
+quero uma visualização por mapa para ver em portugal onde temos mais parceiros. quero poder clicar no mapa
+e ir para o workbench daquele parceiro.
+
+Ideias futuras
+
+lista para colocar ideias futuras para o nosso negócio, ordenando-as por importancia/tema
+
+ Entregas e Recolhas
+
+Cálculos de transporte: secção que nos permite calcular os custos de transporte (os clientes muitas vezes
+pedem nos para recolher os bouquets em vários sítios do país). em vez de ter que abrir sempre o site da via
+michelin, seria bom ter esta funcionalidade integrada: ao colocar o local de partida e do destino, seria calculado
+o custo de viagens (galosina, portagens, msotrar percurso, etc, tudo atualizado com a atualidade), e depois
+era-nos sugerido um preço para cobrar ao cliente. não sei se daria para integrar o via michin diretamente na
+plataforma para seria bom. Não meter funcional já. deixar só o placeholder para mais tarde me focar em
+desenvolver isso.
+
+secção sumária de recolhas agendadas e de entregas ctt a receber/enviar
+dia, hora localização.
+Registo de atividade (audit log)
+
+- quem alterou o quê e quando
+
+Gestão de ficheiros
+os anexos de comprovativos de pagamento, faturas, fotos das flores, link da Drive. devem ser guardados em
+links externos da drive. o objetivo é que cada cliente tenha a sua pasta na drive.
+
+Funcionalidades extra:
+Criação de alertas visuais quando algum cliente (ou seja preservação de flores e vale presente) está sem
+resposta há mais de 24h. não sei como é melhor fazer este alerta, mas o melhor seria notificação dentro da
+plataforma, de alguma forma (estou aberta a sugestões)
+criar automaticamente lembretes quando a data prevista de entrega se aproxima. (campo "data de previsão de
+entrega" no status)
+criar automaticamente diferenciação visual quando faltam 5 dias ou menos para a data do evento ( campo
+"Data do evento" do preservação de flores)
+
+App móvel progressiva (PWA) - a plataforma que vou construir no Vercel, quero que seja configurada para
+funcionar como uma app no telemóvel sem precisar de publicar na App Store. Para gerir encomendas quando
+não estás ao computador.
+
+Segurança e Dados
+Backup automático diário de toda a base de dados, exportado automaticamente para uma pasta no Google
+Drive do info@floresabeirario.pt.
+Botão de exportação manual disponível na plataforma, que permite exportar todas as encomendas de
+preservação e todos os vales presente para um ficheiro Excel ou CSV, a qualquer momento.
+Nenhuma encomenda, vale presente ou parceria pode ser apagada permanentemente da base de dados.
+Qualquer eliminação deve funcionar como arquivo, ficando o registo invisível na plataforma mas recuperável
+por um admin quando necessário.
+Registo de auditoria completo de todas as alterações feitas na plataforma, guardando o quê foi alterado, quem
+alterou, o valor anterior e o valor novo, com data e hora exatas.
+As passwords dos utilizadores devem ser encriptadas e nunca guardadas em texto simples. A autenticação deve
+ser feita através do sistema nativo do Supabase.
+Nenhum dado sensível de clientes, como emails, números de telemóvel ou NIFs, deve ser exposto publicamente
+em nenhuma parte da plataforma ou dos sites públicos associados.
+
+pesquisa global: A plataforma deve ter uma barra de pesquisa global, acessível a partir de qualquer página, que
+permita pesquisar em simultâneo em todas as abas (preservação, vales presente e parcerias. todos os campos).
+
+ambos os forms podem ser preenchidos pelo cliente no site em pt ou em en, mas independetemente da
+linguagem em que são preenchidos, os resultados vão todos para o mesmo sitio.
+
+Moeda e formatos: Assume sempre euros e formato europeu (vírgula decimal, datas dd/mm/aaaa)
+
+RGPD e proteção de dados
+A plataforma trata dados pessoais de clientes (nome, email, telemóvel, morada, NIF, conteúdo de
+comunicações) e tem que cumprir o RGPD.
+Consentimento nos formulários públicos
+No fim de cada formulário (reserva de preservação e oferta de vale presente), antes do botão de submissão,
+incluir checkbox obrigatório com o seguinte texto:
+Versão PT: "Li e aceito os Termos e Condições e a Política de Privacidade da Flores à Beira Rio. Autorizo o
+tratamento dos meus dados pessoais para gestão da minha encomenda."
+Versão EN: "I have read and accept the Terms and Conditions and the Privacy Policy of Flores à Beira Rio. I
+authorize the processing of my personal data for order management."
+Os links abrem em nova janela. Sem este checkbox marcado, o botão de submissão fica desativado.
+Guardar na base de dados, junto à encomenda: data e hora exatas em que o consentimento foi dado, e versão
+dos termos aceites (assim se os termos forem atualizados, sabe-se sempre que versão cada cliente aceitou).
+
+Direito ao esquecimento
+
+Já está previsto que nada seja apagado permanentemente (apenas arquivado), mas o RGPD obriga a que o
+cliente possa pedir eliminação efetiva dos seus dados. Implementar:
+
+Função "Apagar definitivamente" disponível apenas para admin, separada do arquivar normal. Pede
+confirmação dupla. Antes de apagar, mostra resumo de tudo o que vai ser eliminado (encomenda,
+comunicações, ficheiros associados). Regista no audit log quem apagou, quando e qual o motivo (campo
+obrigatório de justificação).
+
+Manter apenas dados anonimizados para fins estatísticos (ex: "1 casamento em Junho 2024 com orçamento de
+800"), sem qualquer informação que permita identificar o cliente.
+
+Exportação de dados pessoais
+
+O cliente pode pedir cópia de todos os seus dados. Função para admin gerar PDF ou JSON com todos os dados
+associados a um cliente (encomendas, comunicações, ficheiros) para enviar ao próprio.
+
+Acesso interno aos dados
+
+Os admin têm acesso completo. O terceiro utilizador (com permissões limitadas) só vê informação estritamente
+necessária para a sua função. Os dados sensíveis (NIF, email, telemóvel) nunca devem aparecer em URLs, em
+logs públicos, ou em emails automáticos para terceiros.
+
+Retenção de dados
+
+Definir prazo de retenção: encomendas concluídas ficam arquivadas durante 10 anos (obrigação fiscal
+portuguesa para faturação). Após esse prazo, alerta automático para revisão e possível anonimização.
+
+Anti spam nos formulários públicos
+
+Os formulários públicos (reserva de preservação e oferta de vale presente) ficam expostos na internet e vão
+receber tentativas de spam por bots. Implementar as seguintes camadas de proteção:
+
+Cloudflare Turnstile (gratuito e sem fricção para o utilizador, alternativa moderna ao reCAPTCHA): integrar
+em ambos os formulários antes do botão de submissão. Se a verificação falhar, bloquear submissão.
+
+Honeypot: campo escondido por CSS que humanos não veem mas bots tendem a preencher. Se vier preenchido,
+descartar a submissão silenciosamente (sem dar erro, para o bot pensar que funcionou).
+Rate limiting: limitar a 5 submissões por hora por endereço IP. Se ultrapassar, bloquear temporariamente com
+mensagem amigável "Detetámos demasiadas tentativas. Tente novamente daqui a uma hora."
+
+Logs de submissões falhadas: guardar IP, timestamp e razão do bloqueio para análise posterior, caso seja
+necessário ajustar regras.
+
+Validações dos formulários
+Todos os formulários públicos (reserva de preservação e oferta de vale presente) devem ter validações claras
+antes de permitir submissão. Mensagens de erro devem aparecer junto ao campo respetivo, em PT ou EN
+consoante o idioma em que o formulário está a ser preenchido.
+Regras de validação:
+Campos obrigatórios marcados com asterisco não podem ficar vazios. Se o cliente tentar submeter, destacar a
+vermelho todos os campos em falta e fazer scroll até ao primeiro.
+Email: deve ter formato válido (algo@algo.algo). Validar em tempo real assim que o cliente sai do campo.
+Número de telemóvel: aceitar formatos portugueses e internacionais com drop down do pais e pesquisa (com
+indicativo +). Permitir espaços que são removidos automaticamente antes de guardar.
+Valor do vale presente: mínimo 300, sem máximo definido. Se for inferior, mostrar mensagem "O valor
+mínimo é de 300, correspondente ao quadro mais pequeno."
+Datas: formato dd/mm/aaaa. Data do evento pode ser anterior à data atual (no formulário de preservação). Data
+ideal de envio do vale (no formulário de vale presente) não pode ser anterior à data atual.
+Campos condicionais: quando uma resposta revela um campo dependente, esse campo passa também a ser
+obrigatório se estiver visível.
+Campos de texto livre (mensagem personalizada, notas, etc): limite de 1000 caracteres com contador visível.
+Após submissão bem sucedida, mostrar página de confirmação com resumo do pedido e enviar email
+automático de confirmação ao cliente (em PT ou EN consoante o idioma do formulário).
+
+inspira-te nos formulários atuais:
+https://www.floresabeirario.pt/reservar-preservacao
+https://www.floresabeirario.pt/vale-presente
+design da plataforma super moderno.
+tipos de letra da marca: google sans (https://fonts.google.com/specimen/Google+Sans) e tan memories
+

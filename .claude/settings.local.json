@@ -75,7 +75,18 @@
       "Bash(git clone *)",
       "Bash(ls -la /tmp/fbr-website 2>&1 | head -30)",
       "Read(//tmp/**)",
-      "Bash(rm -rf /tmp/fbr-website 2>&1; echo \"cleanup done\")"
+      "Bash(rm -rf /tmp/fbr-website 2>&1; echo \"cleanup done\")",
+      "Bash(dir /b /s \"c:\\\\Users\\\\maria\\\\Documents\\\\fbr-admin2\\\\*.pdf\")",
+      "Bash(dir /b \"c:\\\\Users\\\\maria\\\\Downloads\\\\*.pdf\")",
+      "Bash(dir /b \"c:\\\\Users\\\\maria\\\\Documents\\\\*.pdf\")",
+      "Bash(dir /b \"c:\\\\Users\\\\maria\\\\Desktop\\\\*.pdf\")",
+      "Bash(pdftotext -layout \"c:\\\\Users\\\\maria\\\\Documents\\\\fbr-admin2\\\\public\\\\plataforma admin.pdf\" \"c:\\\\Users\\\\maria\\\\Documents\\\\fbr-admin2\\\\public\\\\plataforma-admin.txt\")",
+      "Bash(powershell -Command \"\\(Get-Item 'c:\\\\Users\\\\maria\\\\Documents\\\\fbr-admin2\\\\public\\\\plataforma-admin.txt'\\).Length\")",
+      "Bash(where.exe gh *)",
+      "Bash(where.exe git *)",
+      "WebFetch(domain:github.com)",
+      "Bash(if [ -d \"c:/Users/maria/Documents/fbr-website\" ]; then echo \"EXISTE: c:/Users/maria/Documents/fbr-website\"; ls -la \"c:/Users/maria/Documents/fbr-website\" | head -20; else echo \"NAO existe em Documents/fbr-website\"; fi)",
+      "Read(//c/Users/maria/Documents/fbr-website/**)"
     ],
     "additionalDirectories": [
       "c:\\Users\\maria\\Documents\\fbr-admin2\\src\\app\\(admin)\\parcerias",
