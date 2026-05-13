@@ -98,7 +98,10 @@
       "Bash(node _tmp_apply_messages.mjs)",
       "Bash(node _tmp_apply_css.mjs)",
       "Bash(cp /tmp/fbr-website/app/vale-presente/ValeApresenteForm.jsx _fbr-website-updates/app/vale-presente/ValeApresenteForm.jsx)",
-      "Bash(cp /tmp/fbr-website/app/vale-presente/ValeApresenteClient.css _fbr-website-updates/app/vale-presente/ValeApresenteClient.css)"
+      "Bash(cp /tmp/fbr-website/app/vale-presente/ValeApresenteClient.css _fbr-website-updates/app/vale-presente/ValeApresenteClient.css)",
+      "PowerShell(npx eslint src/lib/supabase/orders.ts src/app/\\(admin\\)/preservacao/preservacao-client.tsx 2>&1 | Select-Object -First 60)",
+      "PowerShell(npx eslint \"src/lib/supabase/orders.ts\" \"src/app/\\(admin\\)/preservacao/preservacao-client.tsx\" 2>&1)",
+      "PowerShell(npx eslint \"src/lib/supabase/orders.ts\" \"src/app/\\(admin\\)/preservacao/preservacao-client.tsx\" \"src/app/\\(admin\\)/preservacao/_styles.ts\" 2>&1)"
     ],
     "additionalDirectories": [
       "c:\\Users\\maria\\Documents\\fbr-admin2\\src\\app\\(admin)\\parcerias",
