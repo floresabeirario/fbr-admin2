@@ -86,12 +86,25 @@
       "Bash(where.exe git *)",
       "WebFetch(domain:github.com)",
       "Bash(if [ -d \"c:/Users/maria/Documents/fbr-website\" ]; then echo \"EXISTE: c:/Users/maria/Documents/fbr-website\"; ls -la \"c:/Users/maria/Documents/fbr-website\" | head -20; else echo \"NAO existe em Documents/fbr-website\"; fi)",
-      "Read(//c/Users/maria/Documents/fbr-website/**)"
+      "Read(//c/Users/maria/Documents/fbr-website/**)",
+      "Bash(sed -n '1405,1420p' /tmp/fbr-website/messages/pt.json)",
+      "Bash(sed -n '1408,1420p' /tmp/fbr-website/messages/en.json)",
+      "Bash(cp /tmp/fbr-website/messages/pt.json /tmp/pt-orig.json)",
+      "Bash(cp /tmp/fbr-website/messages/en.json /tmp/en-orig.json)",
+      "Bash(sed -i 's|\"Se tiver preferências de design, indique aqui. Após a preservação, enviamos-lhe foto com a disposição das flores sem estarem coladas, para que possa pedir os ajustes que sentir necessários antes da finalização definitiva do quadro.\"|\"Se tiver preferências de design, indique aqui. Após a preservação, enviamos-lhe **sempre** uma foto com a disposição das flores sem estarem coladas, para que possa pedir os ajustes que sentir necessários antes da finalização definitiva do quadro.\"|' /tmp/fbr-website/messages/pt.json *)",
+      "Bash(python3)",
+      "Bash(cygpath -w /tmp/fbr-website)",
+      "Bash(node _tmp_apply_vale.mjs)",
+      "Bash(node _tmp_apply_messages.mjs)",
+      "Bash(node _tmp_apply_css.mjs)",
+      "Bash(cp /tmp/fbr-website/app/vale-presente/ValeApresenteForm.jsx _fbr-website-updates/app/vale-presente/ValeApresenteForm.jsx)",
+      "Bash(cp /tmp/fbr-website/app/vale-presente/ValeApresenteClient.css _fbr-website-updates/app/vale-presente/ValeApresenteClient.css)"
     ],
     "additionalDirectories": [
       "c:\\Users\\maria\\Documents\\fbr-admin2\\src\\app\\(admin)\\parcerias",
       "C:\\Users\\maria\\Documents\\fbr-admin2\\public\\favicon",
-      "\\tmp"
+      "\\tmp",
+      "\\tmp\\fbr-website\\messages"
     ]
   }
 }
