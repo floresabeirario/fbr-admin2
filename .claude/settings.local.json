@@ -111,7 +111,9 @@
       "PowerShell(npx eslint src/lib/public-status.ts src/app/\\(admin\\)/status/status-client.tsx 2>&1 | Select-Object -First 50)",
       "PowerShell(npx eslint \"src/lib/public-status.ts\" \"src/app/\\(admin\\)/status/status-client.tsx\" 2>&1)",
       "mcp__claude_ai_Vercel__list_deployments",
-      "Bash(echo \"EXIT: $?\")"
+      "Bash(echo \"EXIT: $?\")",
+      "Bash(echo \"tsc exit=$?\")",
+      "Bash(echo \"eslint exit=$?\")"
     ],
     "additionalDirectories": [
       "c:\\Users\\maria\\Documents\\fbr-admin2\\src\\app\\(admin)\\parcerias",
