@@ -105,7 +105,11 @@
       "PowerShell(npx eslint \"src/lib/supabase/orders.ts\" \"src/lib/supabase/vouchers.ts\" \"src/lib/supabase/partners.ts\" \"src/app/\\(admin\\)/preservacao/preservacao-client.tsx\" \"src/app/\\(admin\\)/preservacao/_styles.ts\" \"src/app/\\(admin\\)/vale-presente/vale-presente-client.tsx\" \"src/app/\\(admin\\)/parcerias/parcerias-client.tsx\" 2>&1)",
       "Bash(ls \"C:/Users/maria/.claude/projects/c--Users-maria-Documents-fbr-admin2/memory/\" 2>&1)",
       "Read(//c/Users/maria/.claude/projects/c--Users-maria-Documents-fbr-admin2/memory/**)",
-      "Bash(echo \"tsc=$?\")"
+      "Bash(echo \"tsc=$?\")",
+      "PowerShell(npx tsc --noEmit)",
+      "PowerShell(npx next lint 2>&1)",
+      "PowerShell(npx eslint src/lib/public-status.ts src/app/\\(admin\\)/status/status-client.tsx 2>&1 | Select-Object -First 50)",
+      "PowerShell(npx eslint \"src/lib/public-status.ts\" \"src/app/\\(admin\\)/status/status-client.tsx\" 2>&1)"
     ],
     "additionalDirectories": [
       "c:\\Users\\maria\\Documents\\fbr-admin2\\src\\app\\(admin)\\parcerias",
