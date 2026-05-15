@@ -124,7 +124,9 @@
       "PowerShell(npx tsc --noEmit; echo \"tsc=$LASTEXITCODE\"; npx eslint \"src/app/\\(admin\\)/entregas-recolhas/entregas-recolhas-client.tsx\" 2>&1; echo \"eslint=$LASTEXITCODE\")",
       "PowerShell(npx tsc --noEmit; echo \"tsc=$LASTEXITCODE\"; npx eslint \"src/app/\\(admin\\)/entregas-recolhas/\" 2>&1; echo \"eslint=$LASTEXITCODE\")",
       "PowerShell(npx tsc --noEmit; echo \"tsc=$LASTEXITCODE\"; npx eslint \"src/app/\\(admin\\)/entregas-recolhas/\" \"src/app/\\(admin\\)/preservacao/[id]/workbench-client.tsx\" \"src/types/database.ts\" 2>&1; echo \"eslint=$LASTEXITCODE\")",
-      "PowerShell(gh repo view floresabeirario/fbr-tracking --json name,description,defaultBranchRef)"
+      "PowerShell(gh repo view floresabeirario/fbr-tracking --json name,description,defaultBranchRef)",
+      "PowerShell(npx eslint src/app/\\(admin\\)/preservacao/`[id`]/workbench-client.tsx src/app/\\(admin\\)/preservacao/preservacao-client.tsx 2>&1 | Select-Object -Last 50)",
+      "PowerShell(npx eslint 'src/app/\\(admin\\)/preservacao/[id]/workbench-client.tsx' 'src/app/\\(admin\\)/preservacao/preservacao-client.tsx' 2>&1)"
     ],
     "additionalDirectories": [
       "c:\\Users\\maria\\Documents\\fbr-admin2\\src\\app\\(admin)\\parcerias",
