@@ -144,7 +144,9 @@
       "Bash(git -C c:/Users/maria/Documents/fbr-admin2 log -5 --oneline)",
       "Bash(git -C c:/Users/maria/Documents/fbr-admin2 diff --stat HEAD)",
       "Bash(git -C c:/Users/maria/Documents/fbr-admin2 status)",
-      "Bash(git -C c:/Users/maria/Documents/fbr-admin2 show --stat a7d1cea)"
+      "Bash(git -C c:/Users/maria/Documents/fbr-admin2 show --stat a7d1cea)",
+      "Bash(tee tsc.out)",
+      "Bash(echo \"---EXIT $?---\")"
     ],
     "additionalDirectories": [
       "c:\\Users\\maria\\Documents\\fbr-admin2\\src\\app\\(admin)\\parcerias",
