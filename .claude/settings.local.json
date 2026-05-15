@@ -140,7 +140,11 @@
       "Bash(git -C c:/Users/maria/Documents/fbr-admin2 status --porcelain)",
       "Bash(git -C c:/Users/maria/Documents/fbr-admin2 ls-files scripts)",
       "Bash(rm -rf \"c:/Users/maria/Documents/fbr-admin2/c:UsersmariaDocumentsfbr-admin2srctypes\" \"c:/Users/maria/Documents/fbr-admin2/c:UsersmariaDocumentsfbr-admin2supabasemigrations\" && echo \"ghost folders gone\"; ls c:/Users/maria/Documents/fbr-admin2/ | grep -i \"c:Users\" || echo \"confirmed: no malformed folders\")",
-      "Bash(git -C c:/Users/maria/Documents/fbr-admin2 status --short)"
+      "Bash(git -C c:/Users/maria/Documents/fbr-admin2 status --short)",
+      "Bash(git -C c:/Users/maria/Documents/fbr-admin2 log -5 --oneline)",
+      "Bash(git -C c:/Users/maria/Documents/fbr-admin2 diff --stat HEAD)",
+      "Bash(git -C c:/Users/maria/Documents/fbr-admin2 status)",
+      "Bash(git -C c:/Users/maria/Documents/fbr-admin2 show --stat a7d1cea)"
     ],
     "additionalDirectories": [
       "c:\\Users\\maria\\Documents\\fbr-admin2\\src\\app\\(admin)\\parcerias",
