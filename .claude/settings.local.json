@@ -118,7 +118,10 @@
       "PowerShell($PSVersionTable.PSVersion)",
       "PowerShell(Get-Command Get-Content)",
       "PowerShell(npx eslint \"src/app/\\(admin\\)/metricas/metricas-client.tsx\" \"src/app/\\(admin\\)/preservacao/_styles.ts\" \"src/app/\\(admin\\)/healthchecks/healthchecks-client.tsx\" \"src/app/\\(admin\\)/ecossistema/page.tsx\" \"src/app/\\(admin\\)/financas/financas-client.tsx\" \"src/components/install-prompt.tsx\" \"src/app/\\(admin\\)/chat/chat-client.tsx\" \"src/app/\\(admin\\)/entregas-recolhas/entregas-recolhas-client.tsx\" \"src/app/\\(admin\\)/vale-presente/[code]/workbench-client.tsx\" 2>&1)",
-      "Bash(echo \"exit: $?\")"
+      "Bash(echo \"exit: $?\")",
+      "PowerShell(npx tsc --noEmit; echo \"exit=$LASTEXITCODE\")",
+      "PowerShell(npx eslint \"src/app/\\(admin\\)/entregas-recolhas/entregas-recolhas-client.tsx\" 2>&1)",
+      "PowerShell(npx tsc --noEmit; echo \"tsc=$LASTEXITCODE\"; npx eslint \"src/app/\\(admin\\)/entregas-recolhas/entregas-recolhas-client.tsx\" 2>&1; echo \"eslint=$LASTEXITCODE\")"
     ],
     "additionalDirectories": [
       "c:\\Users\\maria\\Documents\\fbr-admin2\\src\\app\\(admin)\\parcerias",
