@@ -146,14 +146,18 @@
       "Bash(git -C c:/Users/maria/Documents/fbr-admin2 status)",
       "Bash(git -C c:/Users/maria/Documents/fbr-admin2 show --stat a7d1cea)",
       "Bash(tee tsc.out)",
-      "Bash(echo \"---EXIT $?---\")"
+      "Bash(echo \"---EXIT $?---\")",
+      "Bash(file public/favicon/android-chrome-512x512.png public/favicon/apple-touch-icon.png 2>nul; ls -la public/favicon/)",
+      "Bash(node scripts/generate-maskable-icons.mjs)",
+      "Bash(findstr /r \"grid-cols-[2-9]\" src/app/\\\\\\(admin\\\\\\)/*.tsx src/app/\\\\\\(admin\\\\\\)/**/*.tsx)"
     ],
     "additionalDirectories": [
       "c:\\Users\\maria\\Documents\\fbr-admin2\\src\\app\\(admin)\\parcerias",
       "C:\\Users\\maria\\Documents\\fbr-admin2\\public\\favicon",
       "\\tmp",
       "\\tmp\\fbr-website\\messages",
-      "c:\\Users\\maria\\Documents\\fbr-admin2"
+      "c:\\Users\\maria\\Documents\\fbr-admin2",
+      "C:\\Users\\maria\\Documents\\fbr-admin2"
     ]
   }
 }
