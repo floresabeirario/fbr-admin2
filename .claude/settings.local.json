@@ -128,7 +128,8 @@
       "PowerShell(npx eslint src/app/\\(admin\\)/preservacao/`[id`]/workbench-client.tsx src/app/\\(admin\\)/preservacao/preservacao-client.tsx 2>&1 | Select-Object -Last 50)",
       "PowerShell(npx eslint 'src/app/\\(admin\\)/preservacao/[id]/workbench-client.tsx' 'src/app/\\(admin\\)/preservacao/preservacao-client.tsx' 2>&1)",
       "WebFetch(domain:docs.google.com)",
-      "WebFetch(domain:doc-0c-8k-sheets.googleusercontent.com)"
+      "WebFetch(domain:doc-0c-8k-sheets.googleusercontent.com)",
+      "Bash(grep -E \"^C:\\\\\\\\\\\\\\\\\")"
     ],
     "additionalDirectories": [
       "c:\\Users\\maria\\Documents\\fbr-admin2\\src\\app\\(admin)\\parcerias",
